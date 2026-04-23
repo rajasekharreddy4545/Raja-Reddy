@@ -95,6 +95,7 @@
       background: linear-gradient(to right, #0284c7, #38bdf8);
       color: white;
       border-radius: 20px;
+      text-decoration: none;
       cursor: pointer;
     }
 
@@ -328,6 +329,132 @@
   border: 1px solid #0ea5e9;
 }
 
+ /* ===== YOUR EXISTING CSS (UNCHANGED) ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+      color: #0f172a;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+    }
+
+    nav h2 { color: #0284c7; }
+
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+    }
+
+    nav a:hover { color: #0284c7; }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 40px;
+    }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 90vh;
+    }
+
+    .highlight {
+      background: linear-gradient(to right, #0284c7, #38bdf8);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .code-box {
+      background: #020617;
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 15px;
+      font-family: monospace;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin: 5px;
+      padding: 5px 10px;
+      background: #e0f2fe;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    /* ===== ADD ONLY THIS FOR PROJECTS ===== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: linear-gradient(135deg, #ffffff, #e0f2fe);
+      border: 1px solid #bae6fd;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(2,132,199,0.1);
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      background: linear-gradient(to right, #0284c7, #38bdf8);
+      color: white;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
   </style>
 </head>
 
@@ -335,11 +462,13 @@
 
   <!-- NAV -->
   <nav>
-    <h2>&lt;Portfolio/&gt;</h2>
+    <h1>Rajasekhar Reddy</h1>
+<h2>Code. Design. Deliver.</h2>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#exp">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -350,38 +479,79 @@
       <h1>Hi, I'm <span class="highlight">Rajasekhar Reddy</span></h1>
       <h1>Frontend Developer</h1>
       <p>Angular, ReactJS & Flutter Developer building modern responsive applications.</p>
-      
+      <a href="#contact" class="btn">Connect</a>
     </div>
 
 <div class="code-box">
 <pre>
-async function getDeveloper() {
+getDeveloper() {
   return {
-    name: "Rajasekhar Reddy",
     role: "Frontend Developer",
     experience: "1.4+ years",
-    stack: ["Angular", "React", "Flutter"]
+    skills: ["Angular", "React", "Flutter"]
   };
 }
-
-getDeveloper().then(dev => {
-  console.log(dev);
-});
 </pre>
 </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="about">
-    <h2>Who Am I?</h2>
-    <p>
-      I'm a frontend developer focused on building scalable, responsive web and mobile apps using Angular, ReactJS and Flutter.
+  <!-- ABOUT -->
+<section id="about" class="about">
+
+  <div style="
+    background: linear-gradient(135deg, #ffffff, #e0f2fe);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2,132,199,0.1);
+    border: 1px solid #bae6fd;
+  ">
+
+    <h2 style="font-size: 30px; margin-bottom: 15px;">About Me</h2>
+
+    <p style="color:#475569; max-width:800px; margin:auto;">
+     I’m a frontend developer with over 1.4+ years of hands-on experience creating scalable and user-centric applications. I specialize in turning complex ideas into simple, responsive, and visually engaging interfaces using modern technologies such as Angular, React, and Flutter.
     </p>
-  </section>
+
+    <!-- TAGS -->
+<div style="margin-top:20px;">
+  <span class="tag">Component-Based Architecture</span>
+  <span class="tag">RxJS & State Management</span>
+  <span class="tag">REST API Integration</span>
+  <span class="tag">Responsive Design Systems</span>
+</div>
+
+    <!-- EDUCATION BOX -->
+    <div style="
+      margin-top:30px;
+      background:#f1f5f9;
+      padding:20px;
+      border-radius:15px;
+      border:1px solid #cbd5f5;
+    ">
+      <h3>Education</h3>
+
+      <p style="margin-top:10px; font-weight:600;">
+        Bachelor of Technology
+      </p>
+
+      <p style="color:#64748b;">
+        Veltech University, Chennai, Tamil Nadu
+      </p>
+
+      <div style="margin-top:10px;">
+        <span class="tag">2021 - 2025</span>
+        <span class="tag">CGPA: 8.79 / 10</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <h2 style="text-align:center;">My Tech Stack</h2>
+    <h2 style="text-align:center;">Skills</h2>
 
     <div class="skills-grid">
       <div class="card">
@@ -424,7 +594,7 @@ getDeveloper().then(dev => {
 
   <!-- EXPERIENCE -->
   <section id="exp">
-  <h2 class="section-title">Career Journey</h2>
+  <h2 class="section-title">Experience</h2>
 
   <div class="timeline">
 
@@ -435,14 +605,25 @@ getDeveloper().then(dev => {
       <div class="exp-card">
         <div class="exp-header">
           <span class="date">2025 - Present</span>
-          <span class="company">Ezee.ai Software Solutions · Chennai</span>
+          <span class="company">Ezee.ai · Chennai</span>
         </div>
 
-        <h3>Frontend Developer</h3>
+        <h3>Junior Software Engineer</h3>
 
         <p>
-          Working on fintech products — building Angular & Flutter apps,
-          developing APIs and improving UI performance.
+          <ul style="margin-top:10px; color:#475569; padding-left:20px;">
+  <li>Worked on Angular and React.js in a collections-based enterprise application</li>
+  <li>Implemented Maker-Checker workflows across 25+ modules with RBAC-based validations for secure approvals</li>
+  <li>Developed a hierarchical dashboard with map-based visualization enabling region, state, city, and agent-level drill-down</li>
+  <li>Built a dynamic role-switching feature with permission-based module access</li>
+  <li>Developed and integrated APIs for efficient frontend-backend communication</li>
+  <li>Implemented payload-level encryption and decryption aligned with GCP standards for secure data handling</li>
+  <li>Worked on multi-entity architecture to support scalable business requirements</li>
+  <li>Contributed to DSS-based payment portal with payment link generation, configurable validity, and dynamic options</li>
+  <li>Optimized application performance using SonarQube recommendations</li>
+  <li>Provided frontend support for enterprise clients like JSW and YOMA</li>
+  <li>Upgraded React application from version 17 to 19, improving performance and compatibility</li>
+</ul>
         </p>
 
         <div class="tags">
@@ -453,6 +634,47 @@ getDeveloper().then(dev => {
           <span>MongoDB</span>
           <span>NoSQL</span>
         </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== PROJECTS SECTION (NEW) ===== -->
+<section id="projects">
+  <h2 class="section-title">Projects</h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <h3>Analytics Portal</h3>
+      <p>A React-based analytics dashboard that delivers dynamic visual insights through interactive charts, real-time performance metrics, and multi-level drill-down capabilities. It also features a graphical hierarchy view, enabling users to analyze team structures and campaign performance in a clear, visual format.</p>
+      <div class="tags">
+        <span>React</span>
+        <span>Redux</span>
+        <span>Context API</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Collections Portal</h3>
+      <p>Angular-based collections platform for agents and managers to manage assigned accounts, review customer data, and perform actions like arrangements, field visits, and promise-to-pay updates. Features a hierarchical dashboard with role-based access, along with modules such as Mission Control, Master Allocation, Geo Command, and Reports.</p>
+      <div class="tags">
+        <span>Angular</span>
+        <span>TypeScript</span>
+        <span>HTML</span>
+        <span>SCSS</span>
+      </div>
+    </div>
+    
+        <div class="project-card">
+      <h3>Payment Portal</h3>
+<p>Implemented DSS payment functionality enabling agents to generate payment links through notification rules integrated with communication templates in Collection portal. Configured link validity, dynamic payment options, and customer data mapping, along with support for flexible payment amounts and secure transaction handling.</p>
+      <div class="tags">
+        <span>Angular</span>
+        <span>TypeScript</span>
+        <span>HTML</span>
+        <span>SCSS</span>
       </div>
     </div>
 
