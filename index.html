@@ -1,111 +1,362 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajasekhar Reddy | Developer</title>
+  <title>Rajasekhar Reddy | Full Stack & Agentic AI Engineer</title>
+  <meta name="description" content="Portfolio of Penugonda Rajasekhar Reddy - Full Stack & Agentic AI Engineer specializing in Autonomous AI Agents, RAG Pipelines, VectorDB, and Enterprise Web Systems.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <style>
+    /* CSS VARIABLES - THEME SUPPORT */
+    :root[data-theme="dark"] {
+      --bg-primary: #090d16;
+      --bg-secondary: #0f172a;
+      --bg-card: rgba(15, 23, 42, 0.75);
+      --bg-card-hover: rgba(30, 41, 59, 0.85);
+      --bg-input: #1e293b;
+      --border-color: rgba(56, 189, 248, 0.15);
+      --border-hover: rgba(56, 189, 248, 0.4);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-light: #64748b;
+      --accent-cyan: #38bdf8;
+      --accent-blue: #3b82f6;
+      --accent-glow: rgba(56, 189, 248, 0.18);
+      --gradient-accent: linear-gradient(135deg, #38bdf8 0%, #3b82f6 50%, #6366f1 100%);
+      --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+      --nav-bg: rgba(9, 13, 22, 0.85);
+      --code-bg: #070a10;
+      --tag-bg: rgba(56, 189, 248, 0.08);
+      --tag-border: rgba(56, 189, 248, 0.25);
+      --tag-text: #7dd3fc;
+    }
+
+    :root[data-theme="light"] {
+      --bg-primary: #f0f9ff;
+      --bg-secondary: #e0f2fe;
+      --bg-card: rgba(255, 255, 255, 0.9);
+      --bg-card-hover: #ffffff;
+      --bg-input: #f8fafc;
+      --border-color: rgba(186, 230, 253, 0.9);
+      --border-hover: #0284c7;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
+      --accent-cyan: #0284c7;
+      --accent-blue: #2563eb;
+      --accent-glow: rgba(2, 132, 199, 0.15);
+      --gradient-accent: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%);
+      --card-shadow: 0 10px 30px -10px rgba(2, 132, 199, 0.12);
+      --nav-bg: rgba(255, 255, 255, 0.88);
+      --code-bg: #0f172a;
+      --tag-bg: #e0f2fe;
+      --tag-border: #bae6fd;
+      --tag-text: #0369a1;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      width: 100%;
+      max-width: 100vw;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
-      color: #0f172a;
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      background-image: 
+        radial-gradient(circle at 15% 15%, var(--accent-glow) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, var(--accent-glow) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* TYPOGRAPHY */
+    h1, h2, h3, h4 {
+      color: var(--text-main);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .highlight-text {
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
     }
 
     /* NAVBAR */
     nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 40px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 1000;
-    }
-
-    nav h1 {
-      color: #0284c7;
-    }
-
-    nav ul {
       display: flex;
-      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: var(--gradient-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      font-size: 18px;
+      box-shadow: 0 4px 15px var(--accent-glow);
+    }
+
+    .nav-brand-text {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .nav-brand-text span {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--tag-bg);
+      color: var(--accent-cyan);
+      border: 1px solid var(--tag-border);
+      margin-left: 6px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
       list-style: none;
     }
 
-    nav a {
+    .nav-links a {
       text-decoration: none;
-      color: #334155;
+      color: var(--text-muted);
+      font-size: 14.5px;
       font-weight: 500;
+      transition: color 0.2s ease;
+      position: relative;
     }
 
-    nav a:hover {
-      color: #0284c7;
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent-cyan);
     }
 
-    /* HAMBURGER - hidden on desktop */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-cyan);
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    /* PROFESSIONAL DUAL-STATE SEGMENTED THEME SWITCH */
+    .theme-switch-btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 66px;
+      height: 34px;
+      padding: 3px;
+      border-radius: 30px;
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      cursor: pointer;
+      outline: none;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    :root[data-theme="light"] .theme-switch-btn {
+      background: rgba(240, 249, 255, 0.85);
+      border-color: rgba(2, 132, 199, 0.35);
+      box-shadow: inset 0 2px 4px rgba(2, 132, 199, 0.15), 0 2px 6px rgba(2, 132, 199, 0.1);
+    }
+
+    .theme-switch-btn:hover {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 14px var(--accent-glow);
+      transform: scale(1.04);
+    }
+
+    .theme-switch-btn:focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 2px;
+    }
+
+    .theme-switch-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 4px;
+    }
+
+    .theme-icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      z-index: 2;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .sun-icon {
+      color: #94a3b8;
+      transition: all 0.3s ease;
+    }
+
+    .moon-icon {
+      color: #38bdf8;
+      filter: drop-shadow(0 0 4px #38bdf8);
+      transition: all 0.3s ease;
+    }
+
+    :root[data-theme="light"] .sun-icon {
+      color: #f59e0b;
+      filter: drop-shadow(0 0 4px #f59e0b);
+    }
+
+    :root[data-theme="light"] .moon-icon {
+      color: #64748b;
+      filter: none;
+    }
+
+    /* Sliding Tactile Thumb */
+    .theme-switch-thumb {
+      position: absolute;
+      top: 1px;
+      left: 2px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6), 0 0 10px rgba(56, 189, 248, 0.4);
+      transform: translateX(32px); /* Dark Mode: sits on the right over Moon */
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, border-color 0.3s ease, box-shadow 0.35s ease;
+      z-index: 1;
+    }
+
+    :root[data-theme="light"] .theme-switch-thumb {
+      background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%);
+      border: 1px solid rgba(245, 158, 11, 0.6);
+      box-shadow: 0 2px 6px rgba(245, 158, 11, 0.25), 0 0 10px rgba(245, 158, 11, 0.35);
+      transform: translateX(0px); /* Light Mode: sits on the left over Sun */
+    }
+
+    /* HAMBURGER */
     .hamburger {
       display: none;
       flex-direction: column;
       gap: 5px;
-      cursor: pointer;
-      padding: 4px;
       background: none;
       border: none;
+      cursor: pointer;
+      padding: 6px;
       z-index: 1100;
     }
 
     .hamburger span {
-      display: block;
       width: 25px;
-      height: 3px;
-      background: #0284c7;
+      height: 2.5px;
+      background: var(--text-main);
       border-radius: 3px;
       transition: all 0.3s ease;
-      transform-origin: center;
     }
 
-    /* Animate to X when open */
     .hamburger.open span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
+      transform: translateY(7.5px) rotate(45deg);
     }
     .hamburger.open span:nth-child(2) {
       opacity: 0;
-      transform: scaleX(0);
     }
     .hamburger.open span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
+      transform: translateY(-7.5px) rotate(-45deg);
     }
 
-    /* MOBILE MENU - small top-right dropdown */
+    /* MOBILE MENU DRAWER */
     .mobile-menu {
       position: fixed;
-      top: 60px;
+      top: 72px;
       right: 16px;
-      width: 190px;
-      background: #ffffff;
-      border: 1px solid #bae6fd;
-      border-radius: 14px;
-      box-shadow: 0 8px 30px rgba(2,132,199,0.18);
-      z-index: 1050;
+      width: 240px;
+      background: var(--bg-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
-      padding: 8px 0;
+      padding: 12px 0;
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-8px) scale(0.97);
+      transform: translateY(-10px) scale(0.96);
       transform-origin: top right;
-      transition: opacity 0.22s ease, transform 0.22s ease;
+      transition: all 0.25s ease;
+      z-index: 1050;
     }
 
     .mobile-menu.open {
@@ -114,35 +365,13 @@
       transform: translateY(0) scale(1);
     }
 
-    .mobile-menu-close {
-      display: flex;
-      justify-content: flex-end;
-      padding: 4px 12px 2px;
-    }
-
-    .mobile-menu-close button {
-      background: none;
-      border: none;
-      font-size: 18px;
-      color: #64748b;
-      cursor: pointer;
-      line-height: 1;
-      padding: 2px 6px;
-      border-radius: 6px;
-    }
-
-    .mobile-menu-close button:hover {
-      color: #0284c7;
-      background: #e0f2fe;
-    }
-
     .mobile-menu a {
       text-decoration: none;
-      color: #0f172a;
+      color: var(--text-main);
       font-size: 15px;
       font-weight: 500;
-      padding: 10px 20px;
-      border-bottom: 1px solid #f0f9ff;
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border-color);
       transition: background 0.15s, color 0.15s;
     }
 
@@ -150,268 +379,1484 @@
       border-bottom: none;
     }
 
-    .mobile-menu a:hover {
-      background: #e0f2fe;
-      color: #0284c7;
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      background: var(--tag-bg);
+      color: var(--accent-cyan);
+      font-weight: 700;
     }
 
-    /* MOBILE: show hamburger, hide desktop nav links */
-    @media(max-width: 768px) {
+    @media (max-width: 900px) {
       nav {
-        padding: 15px 20px;
-        flex-direction: row;  /* keep logo left, hamburger right */
+        padding: 14px 20px;
       }
-
-      nav ul {
-        display: none; /* hide desktop nav on mobile */
+      .nav-links {
+        display: none;
       }
-
       .hamburger {
         display: flex;
       }
     }
 
+    /* LAYOUT CONTAINERS */
     section {
-      padding: 60px 20px;
-      max-width: 1100px;
+      padding: 85px 24px;
+      max-width: 1200px;
       margin: auto;
     }
 
-    /* HERO */
+    .section-header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 50px auto;
+    }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent-cyan);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 34px;
+      font-weight: 800;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 26px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14.5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px var(--accent-glow);
+      filter: brightness(1.1);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      transform: translateY(-2px);
+    }
+
+    /* HERO SECTION */
     .hero {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-      min-height: 90vh;
+      gap: 48px;
+      min-height: 88vh;
+      padding-top: 30px;
     }
 
-    .hero-text {
-      flex: 1;
-      min-width: 280px;
+    .hero-content {
+      flex: 1.1;
+      min-width: 320px;
     }
 
-    .hero-text h1 {
-      font-size: 40px;
-    }
-
-    .highlight {
-      background: linear-gradient(to right, #0284c7, #38bdf8);
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-text p {
-      margin: 15px 0;
-      color: #475569;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      border: none;
-      background: linear-gradient(to right, #0284c7, #38bdf8);
-      color: white;
-      border-radius: 20px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* CODE BOX */
-    .code-box {
-      flex: 1;
-      min-width: 280px;
-      background: #020617;
-      color: #e2e8f0;
-      padding: 20px;
-      border-radius: 15px;
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--text-main);
+      padding: 6px 16px;
+      border-radius: 30px;
       font-size: 13px;
-      overflow-x: auto;
-      font-family: monospace;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-      border: 1px solid #0ea5e9;
+      font-weight: 600;
+      margin-bottom: 22px;
     }
 
-    /* ABOUT */
-    .about {
-      text-align: center;
-    }
-
-    .about h2 {
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .about p {
-      color: #475569;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    /* SKILLS */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    .tag {
-      display: inline-block;
-      margin: 5px;
-      padding: 5px 10px;
-      background: #e0f2fe;
-      border-radius: 20px;
-      font-size: 12px;
-    }
-
-    /* EXPERIENCE */
-    .section-title {
-      text-align: center;
-      font-size: 30px;
-      margin-bottom: 40px;
-    }
-
-    .timeline {
-      position: relative;
-      border-left: 3px solid #38bdf8;
-      padding-left: 20px;
-      margin-left: 20px;
-    }
-
-    .dot {
-      position: absolute;
-      left: -11px;
-      width: 20px;
-      height: 20px;
-      background: linear-gradient(135deg, #0284c7, #38bdf8);
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
       border-radius: 50%;
-      box-shadow: 0 0 10px #38bdf8;
+      box-shadow: 0 0 10px #10b981;
+      animation: pulse 2s infinite;
     }
 
-    .timeline-item {
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      line-height: 1.18;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-role {
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      margin-bottom: 18px;
+    }
+
+    .hero-description {
+      color: var(--text-muted);
+      font-size: 16.5px;
+      line-height: 1.7;
+      margin-bottom: 26px;
+      max-width: 580px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    /* STATS COUNTER STRIP */
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .stat-item h3 {
+      font-size: 26px;
+      font-weight: 800;
+      background: var(--gradient-accent);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 2px;
+    }
+
+    .stat-item p {
+      font-size: 12px;
+      color: var(--text-light);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* 3D ROTATING ATOM HERO VISUAL (DIRECT ON PAGE BACKGROUND) */
+    .hero-atom-stage {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      margin-bottom: 40px;
+      min-width: 320px;
     }
 
-    .exp-card {
-      background: linear-gradient(135deg, #ffffff, #e0f2fe);
-      border: 1px solid #bae6fd;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(2,132,199,0.1);
-      transition: 0.3s;
+    .hero-atom-stage::before {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.2) 0%, rgba(168, 85, 247, 0.12) 40%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .exp-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 40px rgba(2,132,199,0.2);
+    /* ATOM 3D CONTAINER */
+    .atom-viewport {
+      position: relative;
+      width: 320px;
+      height: 310px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1000px;
+      z-index: 1;
+      margin: 10px 0 16px 0;
     }
 
-    .exp-header {
+    .atom-system {
+      position: relative;
+      width: 250px;
+      height: 250px;
+      transform-style: preserve-3d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Nucleus Core */
+    .atom-nucleus {
+      position: absolute;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7 0%, #6366f1 50%, #a855f7 100%);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.7), inset 0 0 14px rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      z-index: 10;
+      animation: nucleusPulse 3s ease-in-out infinite alternate;
+    }
+
+    .atom-nucleus span.core-tag {
+      font-size: 8.5px;
+      font-weight: 700;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    @keyframes nucleusPulse {
+      0% {
+        transform: scale(0.93);
+        box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), 0 0 50px rgba(99, 102, 241, 0.3);
+      }
+      100% {
+        transform: scale(1.06);
+        box-shadow: 0 0 45px rgba(56, 189, 248, 0.9), 0 0 70px rgba(168, 85, 247, 0.5);
+      }
+    }
+
+    .nucleus-energy-ring {
+      position: absolute;
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(56, 189, 248, 0.5);
+      animation: spinEnergy 10s linear infinite;
+    }
+
+    @keyframes spinEnergy {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* 3D Orbit Rings */
+    .orbit-ring {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      transform-style: preserve-3d;
+      pointer-events: none;
+    }
+
+    /* Orbit 1: Tilted 65deg X, 25deg Y */
+    .orbit-ring-1 {
+      border-top: 2.5px solid rgba(56, 189, 248, 0.85);
+      border-bottom: 2px solid rgba(56, 189, 248, 0.25);
+      border-left: 2px solid rgba(56, 189, 248, 0.65);
+      border-right: 1.5px solid rgba(56, 189, 248, 0.25);
+      filter: drop-shadow(0 0 10px rgba(56, 189, 248, 0.5));
+      animation: rotateOrbit1 7s linear infinite;
+    }
+
+    /* Orbit 2: Tilted 65deg X, -55deg Y */
+    .orbit-ring-2 {
+      border-top: 2.5px solid rgba(168, 85, 247, 0.85);
+      border-bottom: 2px solid rgba(168, 85, 247, 0.25);
+      border-left: 2px solid rgba(168, 85, 247, 0.65);
+      border-right: 1.5px solid rgba(168, 85, 247, 0.25);
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.5));
+      animation: rotateOrbit2 9s linear infinite reverse;
+    }
+
+    /* Orbit 3: Tilted 25deg X, 75deg Y */
+    .orbit-ring-3 {
+      border-top: 2.5px solid rgba(99, 102, 241, 0.85);
+      border-bottom: 2px solid rgba(99, 102, 241, 0.25);
+      border-left: 2px solid rgba(99, 102, 241, 0.65);
+      border-right: 1.5px solid rgba(99, 102, 241, 0.25);
+      filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.5));
+      animation: rotateOrbit3 11s linear infinite;
+    }
+
+    @keyframes rotateOrbit1 {
+      0% { transform: rotateX(65deg) rotateY(25deg) rotateZ(0deg); }
+      100% { transform: rotateX(65deg) rotateY(25deg) rotateZ(360deg); }
+    }
+
+    @keyframes rotateOrbit2 {
+      0% { transform: rotateX(65deg) rotateY(-55deg) rotateZ(0deg); }
+      100% { transform: rotateX(65deg) rotateY(-55deg) rotateZ(360deg); }
+    }
+
+    @keyframes rotateOrbit3 {
+      0% { transform: rotateX(25deg) rotateY(75deg) rotateZ(0deg); }
+      100% { transform: rotateX(25deg) rotateY(75deg) rotateZ(360deg); }
+    }
+
+    /* Orbiting Electrons */
+    .electron {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: -7px;
+      left: 50%;
+      margin-left: -7px;
+    }
+
+    .electron-1 {
+      background: #38bdf8;
+      box-shadow: 0 0 18px 4px #38bdf8;
+    }
+
+    .electron-2 {
+      background: #c084fc;
+      box-shadow: 0 0 18px 4px #c084fc;
+    }
+
+    .electron-3 {
+      background: #818cf8;
+      box-shadow: 0 0 18px 4px #818cf8;
+    }
+
+    /* Floating Satellite Tech Badges (Direct on Hero Background) */
+    .atom-satellite {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 15px;
+      border-radius: 20px;
+      background: rgba(13, 27, 42, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+      font-size: 12px;
+      font-weight: 700;
+      color: #ffffff;
+      z-index: 12;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .atom-satellite:hover {
+      transform: scale(1.1) !important;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 12px 35px var(--accent-glow);
+    }
+
+    .sat-tl {
+      top: -12px;
+      left: -15px;
+      animation: floatBadge1 4.5s ease-in-out infinite alternate;
+    }
+
+    .sat-tr {
+      top: -12px;
+      right: -15px;
+      animation: floatBadge2 5s ease-in-out infinite alternate;
+    }
+
+    .sat-bl {
+      bottom: -15px;
+      left: -15px;
+      animation: floatBadge2 5.5s ease-in-out infinite alternate;
+    }
+
+    .sat-br {
+      bottom: -15px;
+      right: -15px;
+      animation: floatBadge1 4.8s ease-in-out infinite alternate;
+    }
+
+    .sat-ml {
+      top: 50%;
+      left: -55px;
+      transform: translateY(-50%);
+      animation: floatBadge1 5.2s ease-in-out infinite alternate;
+    }
+
+    .sat-mr {
+      top: 50%;
+      right: -55px;
+      transform: translateY(-50%);
+      animation: floatBadge2 4.7s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBadge1 {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-7px) rotate(-1deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+
+    @keyframes floatBadge2 {
+      0% { transform: translateY(-5px) rotate(1deg); }
+      50% { transform: translateY(5px) rotate(0deg); }
+      100% { transform: translateY(-5px) rotate(1deg); }
+    }
+
+    /* JOURNEY / EVOLUTION SECTION */
+    .journey-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      position: relative;
+    }
+
+    .journey-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .journey-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 12px 30px var(--accent-glow);
+    }
+
+    .journey-card.active-phase {
+      border: 1.5px solid var(--accent-cyan);
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--tag-bg) 100%);
+    }
+
+    .phase-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 4px 10px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .journey-card.active-phase .phase-badge {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      border: none;
+    }
+
+    .journey-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .journey-card p {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+
+    .journey-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 5px;
     }
 
-    .date {
-      font-weight: 600;
-      color: #0284c7;
+    .journey-pill {
+      font-size: 11px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 3px 8px;
+      border-radius: 8px;
+      border: 1px solid var(--tag-border);
+      font-weight: 500;
     }
 
-    .company {
-      background: #bae6fd;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 12px;
+    @media (max-width: 1024px) {
+      .journey-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    .tags span {
-      display: inline-block;
-      margin: 6px 6px 0 0;
-      padding: 6px 12px;
-      background: linear-gradient(to right, #e0f2fe, #bae6fd);
-      border-radius: 20px;
-      font-size: 12px;
-      color: #0369a1;
+    @media (max-width: 640px) {
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
-    /* PROJECTS */
-    .projects-grid {
+    /* ABOUT SECTION */
+    .about-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .about-main-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .about-main-card p {
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .about-pill {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent-cyan);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
       gap: 20px;
     }
 
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .info-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .info-icon {
+      width: 42px;
+      height: 42px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      color: var(--accent-cyan);
+    }
+
+    .info-card h4 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .info-card p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .info-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .info-badge {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .about-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* SKILLS SECTION */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 28px;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-accent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 12px 30px var(--accent-glow);
+    }
+
+    .skill-card:hover::before {
+      opacity: 1;
+    }
+
+    .skill-card-head {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .skill-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+
+    .skill-card-head h3 {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--tag-text);
+      padding: 6px 12px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    .skill-tag.featured-skill {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      border: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 992px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PROJECTS SECTION */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 9px 22px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-tab:hover {
+      color: var(--text-main);
+      border-color: var(--accent-cyan);
+    }
+
+    .filter-tab.active {
+      background: var(--gradient-accent);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 4px 18px var(--accent-glow);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 28px;
+    }
+
     .project-card {
-      background: linear-gradient(135deg, #ffffff, #e0f2fe);
-      border: 1px solid #bae6fd;
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 10px 25px rgba(2,132,199,0.1);
-      transition: 0.3s;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
     .project-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-6px);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 16px 40px var(--accent-glow);
     }
 
-    /* CONTACT */
-    .contact {
-      text-align: center;
+    .project-card.featured-ai {
+      border: 1.5px solid var(--accent-cyan);
+      background: linear-gradient(180deg, var(--bg-card) 0%, rgba(56, 189, 248, 0.04) 100%);
+    }
+
+    .project-card h3 {
+      font-size: 21px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .project-card p {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.65;
+      margin-bottom: 22px;
+      flex-grow: 1;
+    }
+
+    .project-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .project-card .tags span {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 8px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--tag-text);
+    }
+
+    /* EXPERIENCE SECTION - Modern Grouped Company Timeline */
+    .timeline {
+      position: relative;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    .company-experience-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 28px;
+      padding: 38px 40px;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .company-experience-card:hover {
+      border-color: rgba(56, 189, 248, 0.4);
+      box-shadow: 0 16px 45px var(--accent-glow);
+    }
+
+    .company-main-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 26px;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 34px;
+    }
+
+    .company-brand-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .company-logo-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #160c2e 0%, #29124e 100%);
+      border: 1.5px solid rgba(168, 85, 247, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 18px rgba(129, 140, 248, 0.25);
+      overflow: hidden;
+    }
+
+    .company-logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .company-name {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .company-onsite-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      letter-spacing: 0.3px;
+    }
+
+    .company-tenure-meta {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-weight: 500;
+    }
+
+    .company-tenure-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 20px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent-cyan);
+    }
+
+    /* Nested Roles Vertical Timeline */
+    .nested-roles-timeline {
+      position: relative;
+      padding-left: 38px;
+    }
+
+    .nested-roles-timeline::before {
+      content: "";
+      position: absolute;
+      left: 11px;
+      top: 14px;
+      bottom: 26px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-cyan) 0%, rgba(56, 189, 248, 0.2) 100%);
+    }
+
+    .nested-role-item {
+      position: relative;
+      margin-bottom: 38px;
+    }
+
+    .nested-role-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .nested-role-dot {
+      position: absolute;
+      left: -38px;
+      top: 6px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 3.5px solid var(--accent-cyan);
+      box-shadow: 0 0 12px var(--accent-cyan);
+      z-index: 2;
+    }
+
+    .nested-role-dot.active-dot {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 20px var(--accent-cyan);
+    }
+
+    .role-header-line {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .role-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .role-heading {
+      font-size: 21px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .role-badge-present {
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .role-badge-intern {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 3px 10px;
+      border-radius: 12px;
+    }
+
+    .role-meta-info {
+      font-size: 13.5px;
+      color: var(--text-light);
+      margin-top: 5px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .role-meta-sep {
+      color: var(--border-color);
+      font-weight: bold;
+    }
+
+    .exp-list {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+
+    .exp-list li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.6;
+    }
+
+    .exp-list li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--accent-cyan);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .exp-tag {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 12px;
+      border-radius: 12px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--accent-cyan);
+    }
+
+    /* CONTACT SECTION */
+    .contact-container {
+      max-width: 960px;
+      margin: auto;
     }
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-      gap: 20px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 18px;
+      margin-bottom: 36px;
     }
 
     .contact-card {
-      display: block;
-      padding: 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
       text-decoration: none;
-      color: #0369a1;
-      font-weight: 600;
-      border-radius: 15px;
-      background: linear-gradient(135deg, #ffffff, #e0f2fe);
-      border: 1px solid #bae6fd;
-      box-shadow: 0 10px 25px rgba(2,132,199,0.1);
-      transition: 0.3s;
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      cursor: pointer;
     }
 
     .contact-card:hover {
       transform: translateY(-5px);
-      background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-      box-shadow: 0 15px 35px rgba(2,132,199,0.2);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 25px var(--accent-glow);
     }
 
+    .contact-icon {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .contact-label {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .contact-val {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      word-break: break-all;
+    }
+
+    .contact-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11.5px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 4px 12px;
+      border-radius: 12px;
+      margin-top: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .contact-card:hover .contact-action {
+      background: var(--accent-cyan);
+      color: #ffffff;
+      border-color: var(--accent-cyan);
+    }
+
+    .contact-cta-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    /* TOAST NOTIFICATION */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--gradient-accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* FOOTER */
     footer {
+      border-top: 1px solid var(--border-color);
+      padding: 36px 20px;
       text-align: center;
-      padding: 15px;
-      color: #64748b;
+      background: var(--bg-card);
+      color: var(--text-light);
+      font-size: 14px;
     }
 
-    @media(max-width: 768px) {
-      .hero-text h1 {
-        font-size: 28px;
+    footer p {
+      margin-bottom: 6px;
+    }
+
+    .footer-accent {
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* COMPREHENSIVE RESPONSIVE DESIGN */
+    @media (max-width: 900px) {
+      .hero {
+        gap: 36px;
+        min-height: auto;
+        padding-top: 20px;
+      }
+      .hero-content {
+        min-width: unset;
+        width: 100%;
+      }
+      .hero-atom-stage {
+        width: 100%;
+        margin-top: 15px;
+        min-width: unset;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 55px 18px;
+      }
+      .section-header {
+        margin-bottom: 35px;
+      }
+      .section-title {
+        font-size: 27px;
+      }
+      .section-subtitle {
+        font-size: 15px;
+      }
+      .hero h1 {
+        font-size: 32px;
+      }
+      .highlight-text {
+        display: inline;
+        word-break: normal;
+        overflow-wrap: break-word;
+      }
+      .hero-role {
+        font-size: 19px;
+      }
+      .hero-description {
+        font-size: 15px;
+        line-height: 1.6;
+      }
+      .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+        padding-top: 18px;
+      }
+      .stat-item h3 {
+        font-size: 24px;
+      }
+      .stat-item p {
+        font-size: 11.5px;
+        line-height: 1.35;
       }
 
-      .timeline {
-        margin-left: 10px;
+      /* 3D Atom on Mobile: Proportionally scaled so all 6 badges remain visible */
+      .hero-atom-stage {
+        width: 100%;
+        margin-top: 20px;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+      }
+      .atom-viewport {
+        transform: scale(0.8);
+        transform-origin: center center;
+        width: 310px;
+        height: 300px;
+        margin: 0 auto;
+      }
+      .sat-tl { top: -8px; left: -8px; font-size: 10.5px; padding: 5px 10px; }
+      .sat-tr { top: -8px; right: -8px; font-size: 10.5px; padding: 5px 10px; }
+      .sat-bl { bottom: -8px; left: -8px; font-size: 10.5px; padding: 5px 10px; }
+      .sat-br { bottom: -8px; right: -8px; font-size: 10.5px; padding: 5px 10px; }
+      .sat-ml { top: 50%; left: -22px; transform: translateY(-50%); font-size: 10.5px; padding: 5px 10px; display: inline-flex; }
+      .sat-mr { top: 50%; right: -22px; transform: translateY(-50%); font-size: 10.5px; padding: 5px 10px; display: inline-flex; }
+
+      /* About Me */
+      .about-main-card {
+        padding: 24px 18px;
+      }
+      .about-pills {
+        gap: 8px;
+      }
+      .about-pill {
+        font-size: 12px;
+        padding: 6px 12px;
       }
 
-      .dot {
-        left: -9px;
+      /* Projects & Filter Tabs */
+      .filter-tabs {
+        gap: 8px;
+        margin-bottom: 28px;
+      }
+      .filter-tab {
+        padding: 7px 15px;
+        font-size: 12px;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .project-card {
+        padding: 22px 18px;
+        min-width: 0;
+        overflow-wrap: break-word;
+      }
+
+      /* Experience Timeline */
+      .company-experience-card {
+        padding: 22px 16px;
+        border-radius: 20px;
+      }
+      .company-main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .company-brand-row {
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .company-logo-avatar {
+        width: 48px;
+        height: 48px;
+      }
+      .company-name {
+        font-size: 20px;
+      }
+      .nested-roles-timeline {
+        padding-left: 22px;
+        margin-top: 24px;
+      }
+      .nested-roles-timeline::before {
+        left: 6px;
+      }
+      .nested-role-dot {
+        left: -22px;
+        width: 14px;
+        height: 14px;
+        top: 4px;
+      }
+      .role-heading {
+        font-size: 17px;
+      }
+      .role-meta-info {
+        font-size: 12px;
+        flex-wrap: wrap;
+        gap: 4px 6px;
+      }
+      .exp-list li {
+        font-size: 13.5px;
+        line-height: 1.6;
+        margin-bottom: 10px;
+      }
+      .exp-tags {
+        gap: 6px;
+      }
+      .exp-tag {
+        font-size: 11px;
+        padding: 4px 9px;
+      }
+
+      /* Contact */
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+      .contact-card {
+        padding: 20px 16px;
+      }
+      .contact-cta-row {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .contact-cta-row .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .journey-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      nav {
+        padding: 12px 14px;
+      }
+      .nav-talk-btn {
+        display: none;
+      }
+      .nav-brand-text {
+        font-size: 15px;
+      }
+      .nav-brand-text span {
+        font-size: 10px;
+      }
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 45px 14px;
+      }
+      .section-title {
+        font-size: 23px;
+      }
+      .hero h1 {
+        font-size: 27px;
+        line-height: 1.22;
+      }
+      .hero-role {
+        font-size: 16.5px;
+      }
+      .stat-item h3 {
+        font-size: 21px;
+      }
+      .atom-viewport {
+        transform: scale(0.72);
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-brand-text span {
+        display: none;
+      }
+      .atom-viewport {
+        transform: scale(0.64);
+      }
+      .stats-strip {
+        gap: 10px;
+      }
+      .stat-item h3 {
+        font-size: 19px;
+      }
+      .stat-item p {
+        font-size: 10.5px;
       }
     }
   </style>
@@ -419,249 +1864,970 @@
 
 <body>
 
-  <!-- DESKTOP NAV -->
+  <!-- STICKY NAVBAR -->
   <nav>
-    <h1>Raja.dev</h1>
-    <ul>
+    <a href="#" class="nav-brand">
+      <div class="nav-brand-logo">PR</div>
+      <div class="nav-brand-text">
+        Rajasekhar Reddy
+        <span>Software Engineer</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
       <li><a href="#about">About</a></li>
+      <li><a href="#journey">Journey</a></li>
       <li><a href="#skills">Skills</a></li>
-      <li><a href="#exp">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="#projects">Agentic AI & Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
 
-    <!-- HAMBURGER (mobile only) -->
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="nav-actions">
+      <!-- Professional Dual-State Theme Switcher -->
+      <button class="theme-switch-btn" id="themeToggle" role="switch" aria-checked="true" aria-label="Toggle dark and light theme" title="Toggle theme">
+        <span class="theme-switch-track">
+          <span class="theme-icon-wrap sun-wrap" aria-hidden="true">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+          <span class="theme-icon-wrap moon-wrap" aria-hidden="true">
+            <svg class="moon-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </span>
+          <span class="theme-switch-thumb"></span>
+        </span>
+      </button>
+
+      <a href="#contact" class="btn btn-primary nav-talk-btn" style="padding: 8px 18px; font-size: 13.5px;">Let's Connect</a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </nav>
 
-  <!-- MOBILE DROPDOWN MENU -->
+  <!-- MOBILE MENU DROPDOWN -->
   <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-close">
-      <button id="closeMenu" aria-label="Close menu">✕</button>
-    </div>
-    <a href="#about" class="mobile-link">About</a>
+    <a href="#about" class="mobile-link">About Me</a>
+    <a href="#journey" class="mobile-link">Tech Journey</a>
     <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#exp" class="mobile-link">Experience</a>
-    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#projects" class="mobile-link">Agentic AI & Projects</a>
+    <a href="#experience" class="mobile-link">Experience</a>
     <a href="#contact" class="mobile-link">Contact</a>
   </div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Hi, I'm <span class="highlight">Rajasekhar Reddy</span></h1>
-      <h1>Frontend Developer</h1>
-      <p>Angular, ReactJS & Flutter Developer building modern responsive applications.</p>
-      <a href="#contact" class="btn">Connect</a>
-    </div>
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <!-- <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>Available for Software Engineering Roles</span>
+      </div> -->
 
-    <div class="code-box">
-<pre>
-getDeveloper() {
-  return {
-    role: "Frontend Developer",
-    experience: "1.4+ years",
-    skills: ["Angular", "React", "Flutter"]
-  };
-}
-</pre>
-    </div>
-  </section>
+      <h1>
+        Hi, I'm <br>
+        <span class="highlight-text">Penugonda Rajasekhar Reddy</span>
+      </h1>
 
-  <!-- ABOUT -->
-  <section id="about" class="about">
-    <div style="
-      background: linear-gradient(135deg, #ffffff, #e0f2fe);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(2,132,199,0.1);
-      border: 1px solid #bae6fd;
-    ">
-      <h2 style="font-size: 30px; margin-bottom: 15px;">About Me</h2>
-      <p style="color:#475569; max-width:800px; margin:auto;">
-        I'm a frontend developer with over 1.4+ years of hands-on experience creating scalable and user-centric applications. I specialize in turning complex ideas into simple, responsive, and visually engaging interfaces using modern technologies such as Angular, React, and Flutter.
+      <div class="hero-role">Software Engineer · Full Stack & Agentic AI</div>
+
+      <p class="hero-description">
+        Software Engineer specializing in autonomous AI agent pipelines, resilient full-stack systems, and enterprise web applications with Angular & React, backed by scalable backend microservices and end-to-end production observability.
       </p>
-      <div style="margin-top:20px;">
-        <span class="tag">Component-Based Architecture</span>
-        <span class="tag">RxJS & State Management</span>
-        <span class="tag">REST API Integration</span>
-        <span class="tag">Responsive Design Systems</span>
+
+      <div class="hero-cta">
+        <a href="#projects" class="btn btn-primary">
+          <span>Explore AI Agents & Work</span>
+          <span>→</span>
+        </a>
+        <a href="#journey" class="btn btn-secondary">
+          <span>View Tech Journey</span>
+          <span>🧭</span>
+        </a>
       </div>
-      <div style="
-        margin-top:30px;
-        background:#f1f5f9;
-        padding:20px;
-        border-radius:15px;
-        border:1px solid #cbd5f5;
-      ">
-        <h3>Education</h3>
-        <p style="margin-top:10px; font-weight:600;">Bachelor of Technology</p>
-        <p style="color:#64748b;">Veltech University, Chennai, Tamil Nadu</p>
-        <div style="margin-top:10px;">
-          <span class="tag">2021 - 2025</span>
-          <span class="tag">CGPA: 8.79 / 10</span>
+
+      <!-- STATS STRIP -->
+      <div class="stats-strip">
+        <div class="stat-item">
+          <h3 id="statTotalExp">1y 10m</h3>
+          <p>Enterprise Exp. (ezee.ai)</p>
+        </div>
+        <div class="stat-item">
+          <h3>2</h3>
+          <p>Autonomous AI Agents</p>
+        </div>
+        <div class="stat-item">
+          <h3>25+</h3>
+          <p>Enterprise Modules</p>
+        </div>
+        <div class="stat-item">
+          <h3>8.79</h3>
+          <p>B.Tech CGPA</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3D ROTATING ATOM VISUAL EFFECT (DIRECT BACKGROUND) -->
+    <div class="hero-atom-stage">
+      <div class="atom-viewport">
+        <div class="atom-system">
+          <!-- Central Pulsing Nucleus -->
+          <div class="atom-nucleus">
+            <span>Raja</span>
+          </div>
+          <div class="nucleus-energy-ring"></div>
+
+          <!-- Orbit 1 (Electric Cyan) -->
+          <div class="orbit-ring orbit-ring-1">
+            <div class="electron electron-1"></div>
+          </div>
+
+          <!-- Orbit 2 (Vibrant Purple) -->
+          <div class="orbit-ring orbit-ring-2">
+            <div class="electron electron-2"></div>
+          </div>
+
+          <!-- Orbit 3 (Indigo) -->
+          <div class="orbit-ring orbit-ring-3">
+            <div class="electron electron-3"></div>
+          </div>
+
+          <!-- Floating Satellite Tech Badges (Floating on plain background) -->
+          <div class="atom-satellite sat-tl">
+            <span>🤖</span>
+            <span>Agentic AI & RAG</span>
+          </div>
+
+          <div class="atom-satellite sat-tr">
+            <span>🐍</span>
+            <span>Python & LLM</span>
+          </div>
+
+          <div class="atom-satellite sat-bl">
+            <span>📊</span>
+            <span>Observability</span>
+          </div>
+
+          <div class="atom-satellite sat-br">
+            <span>🐳</span>
+            <span>Docker</span>
+          </div>
+
+          <div class="atom-satellite sat-ml">
+            <span>⚛️</span>
+            <span>Angular & React</span>
+          </div>
+
+          <div class="atom-satellite sat-mr">
+            <span>🍃</span>
+            <span>Node.js & MongoDB</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- ABOUT ME SECTION -->
+  <section id="about">
+    <div class="section-header">
+      <div class="section-eyebrow">Profile Background</div>
+      <h2 class="section-title">About Me</h2>
+      <p class="section-subtitle">Bridging autonomous artificial intelligence with resilient production engineering</p>
+    </div>
+
+    <div class="about-container">
+      <div class="about-main-card">
+        <p>
+          I am a <strong>Software Engineer</strong> with <strong id="aboutNarrativeExp">1 year 10 months</strong> of hands-on enterprise experience at <strong>ezee.ai</strong>. During my initial 1-year internship (Chennai), I engineered core enterprise frontend systems in <strong>Angular & React</strong> across three major production platforms (Collections Platform, Analytics & Hierarchy Portal, and DSS Dynamic Payment Portal). Following my promotion to full-time <strong>Junior Software Engineer</strong> (Bengaluru), I expanded into architecting <strong>Agentic AI systems, event-driven microservices with Apache Kafka, and production observability</strong>.
+        </p>
+        <p>
+          Driven by modern intelligent systems, I expanded into <strong>Python, LLMs, RAG, and VectorDB</strong>—successfully engineering two autonomous agents: a <strong>Quality Control (QC) Agent</strong> (automating pre-login checklist audits, integrated with LLMs, MongoDB only, and Document Intelligence) and a <strong>KYC Verification Agent</strong> (powered by Python, LLMs, custom Tools Integration, MongoDB, and Docker). For both systems, I configured host and application observability using <strong>Prometheus, Grafana, Node Exporter, and cAdvisor</strong> to track latency, container health, and throughput in real time.
+        </p>
+        <p>
+          Alongside core development, I bring practical deployment and infrastructure exposure—leveraging <strong>Docker</strong> for containerization, <strong>NGINX</strong> reverse proxies, <strong>Kong API Gateway</strong> routing, and Linux server environments to support reliable, production-ready software systems.
+        </p>
+
+        <div class="about-pills">
+          <span class="about-pill">🤖 Autonomous Multi-Agent Workflows</span>
+          <span class="about-pill">📄 Document Intelligence</span>
+          <span class="about-pill">🛠️ Agentic Tool Calling</span>
+          <span class="about-pill">🍃 MongoDB Database Systems</span>
+          <span class="about-pill">🐳 Docker & NGINX</span>
+          <span class="about-pill">🖥️ Server-Level Linux Configs</span>
+          <span class="about-pill">📊 End-to-End System Observability</span>
+          <span class="about-pill">⚡ Angular & React.js Modern SPAs</span>
+        </div>
+      </div>
+
+      <div class="about-sidebar">
+        <!-- Education Card -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon">🎓</div>
+            <div>
+              <h4>B.Tech Degree</h4>
+              <p>Computer Science & Engineering</p>
+            </div>
+          </div>
+          <p style="margin-top: 6px; font-weight: 600; color: var(--text-main);">
+            Veltech University, Chennai
+          </p>
+          <p style="font-size: 13px;">Graduation: 2021 – 2025</p>
+          <div class="info-badge-row">
+            <span class="info-badge">CGPA: 8.79 / 10</span>
+            <span class="info-badge" style="background: var(--tag-bg); color: var(--accent-cyan); border: 1px solid var(--tag-border);">High Academic Distinction</span>
+          </div>
+        </div>
+
+        <!-- Current Role Card -->
+        <div class="info-card">
+          <div class="info-card-header">
+            <div class="info-icon" style="padding: 0; overflow: hidden; border: 1px solid var(--border-color); background: #160c2e;">
+              <img src="assets/ezeeai_logo.jpg" alt="ezee.ai logo" style="width: 100%; height: 100%; object-fit: cover; border-radius: 12px; display: block;">
+            </div>
+            <div>
+              <h4>ezee.ai</h4>
+              <p id="aboutCompanyTenure">1 yr 10 mos · On-site</p>
+            </div>
+          </div>
+          <div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;">
+            <div style="padding-left: 10px; border-left: 2px solid var(--accent-cyan);">
+              <p style="font-weight: 700; color: var(--text-main); font-size: 13.5px;">Junior Software Engineer</p>
+              <p style="font-size: 12px; color: var(--accent-cyan); font-weight: 600;">Feb 2026 – Present · Bengaluru</p>
+            </div>
+            <div style="padding-left: 10px; border-left: 2px solid var(--border-color);">
+              <p style="font-weight: 600; color: var(--text-muted); font-size: 13px;">Software Engineer Intern</p>
+              <p style="font-size: 12px; color: var(--text-light);">Jan 2025 – Jan 2026 · Chennai</p>
+            </div>
+          </div>
+          <div class="info-badge-row" style="margin-top: 12px;">
+            <span class="info-badge">Full-time + Intern</span>
+            <span class="info-badge" style="background: var(--tag-bg); color: var(--accent-cyan); border: 1px solid var(--tag-border);">Bengaluru & Chennai</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECH JOURNEY & EVOLUTION SECTION -->
+  <section id="journey">
+    <div class="section-header">
+      <div class="section-eyebrow">Progression Roadmap</div>
+      <h2 class="section-title">My Engineering Journey</h2>
+      <p class="section-subtitle">
+        How I systematically evolved from core frontend engineering to enterprise microservice gateways, observability, and autonomous Agentic AI.
+      </p>
+    </div>
+
+    <div class="journey-grid">
+      <!-- Phase 1 -->
+      <div class="journey-card">
+        <span class="phase-badge">Phase 01</span>
+        <h3>Frontend Foundations</h3>
+        <p>Mastered modern reactive web development, state management, and component architecture.</p>
+        <div class="journey-pills">
+          <span class="journey-pill">JavaScript</span>
+          <span class="journey-pill">HTML5/CSS3</span>
+          <span class="journey-pill">Angular</span>
+          <span class="journey-pill">React.js</span>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="journey-card">
+        <span class="phase-badge">Phase 02</span>
+        <h3>Full-Stack & APIs</h3>
+        <p>Expanded to server-side engineering, REST APIs, and flexible document data storage.</p>
+        <div class="journey-pills">
+          <span class="journey-pill">Node.js</span>
+          <span class="journey-pill">MongoDB</span>
+          <span class="journey-pill">REST APIs</span>
+          <span class="journey-pill">Express</span>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="journey-card">
+        <span class="phase-badge">Phase 03</span>
+        <h3>Agentic AI & LLMs</h3>
+        <p>Built 2 autonomous AI agents: Quality Control Agent (with login checklist audits, MongoDB only, Doc Intelligence) and KYC Verification Agent (Tools, Docker), integrating RAG and VectorDB retrieval.</p>
+        <div class="journey-pills">
+          <span class="journey-pill">Python</span>
+          <span class="journey-pill">LLMs</span>
+          <span class="journey-pill">RAG</span>
+          <span class="journey-pill">Vector DB</span>
+          <span class="journey-pill">Agentic Workflows</span>
+          <span class="journey-pill">Tool Calling</span>
+          <span class="journey-pill">MongoDB</span>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="journey-card">
+        <span class="phase-badge">Phase 04</span>
+        <h3>Observability</h3>
+        <p>Implemented total system and application host-level metrics for both the QC Agent and KYC Agent using Prometheus, Grafana, Node Exporter, and cAdvisor (monitoring latency, container performance, pass/fail rates, & alerts).</p>
+        <div class="journey-pills">
+          <span class="journey-pill">Prometheus</span>
+          <span class="journey-pill">Grafana</span>
+          <span class="journey-pill">Node Exporter</span>
+          <span class="journey-pill">cAdvisor</span>
+          <span class="journey-pill">Host & App Metrics</span>
+        </div>
+      </div>
+
+      <!-- Phase 5 -->
+      <div class="journey-card active-phase">
+        <span class="phase-badge">Phase 05 • Current Focus</span>
+        <h3>DevOps & Server Infrastructure</h3>
+        <p>Deepening DevOps and server-level expertise: working with Docker containers, NGINX reverse proxies, and server-level Linux environments, with practical knowledge of Kong & Konga.</p>
+        <div class="journey-pills">
+          <span class="journey-pill">Docker</span>
+          <span class="journey-pill">NGINX</span>
+          <span class="journey-pill">Linux Servers</span>
+          <span class="journey-pill">Kong & Konga</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL SKILLS SECTION -->
   <section id="skills">
-    <h2 style="text-align:center;">Skills</h2>
-    <div class="skills-grid">
-      <div class="card">
-        <h3>Frontend</h3>
-        <span class="tag">Angular</span>
-        <span class="tag">ReactJS</span>
-        <span class="tag">Flutter</span>
-        <span class="tag">Dart</span>
-        <span class="tag">JS</span>
-        <span class="tag">HTML</span>
-        <span class="tag">CSS</span>
-      </div>
-      <div class="card">
-        <h3>Backend</h3>
-        <span class="tag">Node.js</span>
-        <span class="tag">Python</span>
-        <span class="tag">REST APIs</span>
-        <span class="tag">FastAPI</span>
-      </div>
-      <div class="card">
-        <h3>Databases</h3>
-        <span class="tag">MySQL</span>
-        <span class="tag">NoSQL</span>
-        <span class="tag">MongoDB</span>
-      </div>
-      <div class="card">
-        <h3>Tools</h3>
-        <span class="tag">Git & GitHub</span>
-        <span class="tag">Postman</span>
-        <span class="tag">VS Code</span>
-        <span class="tag">Android Studio</span>
-        <span class="tag">Google Colab</span>
-      </div>
+    <div class="section-header">
+      <div class="section-eyebrow">Competency Matrix</div>
+      <h2 class="section-title">Technical Skills & Expertise</h2>
+      <p class="section-subtitle">
+        Categorized stack spanning Agentic AI, API Gateways, Observability, DevOps, Databases, and Frontend Engineering.
+      </p>
     </div>
-  </section>
 
-  <!-- EXPERIENCE -->
-  <section id="exp">
-    <h2 class="section-title">Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="dot"></div>
-        <div class="exp-card">
-          <div class="exp-header">
-            <span class="date">2025 - Present</span>
-            <span class="company">Ezee.ai · Chennai</span>
-          </div>
-          <h3>Junior Software Engineer</h3>
-          <ul style="margin-top:10px; color:#475569; padding-left:20px;">
-            <li>Worked on Angular and React.js in a collections-based enterprise application</li>
-            <li>Implemented Maker-Checker workflows across 25+ modules with RBAC-based validations for secure approvals</li>
-            <li>Developed a hierarchical dashboard with map-based visualization enabling region, state, city, and agent-level drill-down</li>
-            <li>Built a dynamic role-switching feature with permission-based module access</li>
-            <li>Developed and integrated APIs for efficient frontend-backend communication</li>
-            <li>Implemented payload-level encryption and decryption aligned with GCP standards for secure data handling</li>
-            <li>Worked on multi-entity architecture to support scalable business requirements</li>
-            <li>Contributed to DSS-based payment portal with payment link generation, configurable validity, and dynamic options</li>
-            <li>Optimized application performance using SonarQube recommendations</li>
-            <li>Provided frontend support for enterprise clients like JSW and YOMA</li>
-            <li>Upgraded React application from version 17 to 19, improving performance and compatibility</li>
-          </ul>
-          <div class="tags" style="margin-top:12px;">
-            <span>Angular</span>
-            <span>ReactJS</span>
-            <span>Flutter</span>
-            <span>Node.js</span>
-            <span>MongoDB</span>
-            <span>NoSQL</span>
-          </div>
+    <div class="skills-grid">
+      <!-- 1. Agentic AI & RAG -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">🤖</div>
+          <h3>Agentic AI & RAG</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag featured-skill">Agentic AI</span>
+          <span class="skill-tag featured-skill">RAG Architecture</span>
+          <span class="skill-tag featured-skill">Vector Databases</span>
+          <span class="skill-tag featured-skill">LLMs</span>
+          <span class="skill-tag">Autonomous Agents</span>
+          <span class="skill-tag">Prompt Engineering</span>
+          <span class="skill-tag">Tool Calling</span>
+          <span class="skill-tag">Embeddings & Search</span>
+        </div>
+      </div>
+
+      <!-- 2. DevOps & Gateway Exposure -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">⚡</div>
+          <h3>DevOps & Server Infrastructure</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag featured-skill">Docker</span>
+          <span class="skill-tag featured-skill">NGINX</span>
+          <span class="skill-tag featured-skill">Prometheus</span>
+          <span class="skill-tag featured-skill">Grafana</span>
+          <span class="skill-tag">Node Exporter</span>
+          <span class="skill-tag">cAdvisor</span>
+          <span class="skill-tag">Kong Gateway</span>
+          <span class="skill-tag">Konga</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">SonarQube</span>
+        </div>
+      </div>
+
+      <!-- 3. Databases & Vector Stores -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">💾</div>
+          <h3>Databases & Storage</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag featured-skill">PostgreSQL</span>
+          <span class="skill-tag featured-skill">VectorDB</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">MySQL</span>
+          <span class="skill-tag">Redis</span>
+          <span class="skill-tag">SQL</span>
+          <span class="skill-tag">NoSQL</span>
+        </div>
+      </div>
+
+      <!-- 4. Backend & Microservices -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">⚙️</div>
+          <h3>Backend & Architecture</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag featured-skill">Apache Kafka</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">FastAPI</span>
+          <span class="skill-tag">Node.js</span>
+          <span class="skill-tag">Express.js</span>
+          <span class="skill-tag">RESTful APIs</span>
+          <span class="skill-tag">Microservices</span>
+          <span class="skill-tag">RBAC</span>
+        </div>
+      </div>
+
+      <!-- 5. Frontend Engineering -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">💻</div>
+          <h3>Frontend Engineering</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag featured-skill">Angular</span>
+          <span class="skill-tag featured-skill">React.js</span>
+          <span class="skill-tag">TypeScript</span>
+          <span class="skill-tag">JavaScript (ES6+)</span>
+          <span class="skill-tag">RxJS</span>
+          <span class="skill-tag">Redux & Context API</span>
+          <span class="skill-tag">HTML5 & SCSS</span>
+          <span class="skill-tag">Responsive Design</span>
+        </div>
+      </div>
+
+      <!-- 6. Software Engineering Tools -->
+      <div class="skill-card">
+        <div class="skill-card-head">
+          <div class="skill-icon">🛠️</div>
+          <h3>Software Engineering Tooling</h3>
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Postman</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">pgAdmin / DBeaver</span>
+          <span class="skill-tag">Google Colab</span>
+          <span class="skill-tag">Linux / Bash</span>
+          <span class="skill-tag">Agile / Scrum</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- PROJECTS & AGENTIC AI SHOWCASE -->
   <section id="projects">
-    <h2 class="section-title">Projects</h2>
+    <div class="section-header">
+      <div class="section-eyebrow">Portfolio Works</div>
+      <h2 class="section-title">Agentic AI & Featured Projects</h2>
+      <p class="section-subtitle">
+        Real-world autonomous agents, intelligent retrieval pipelines, and enterprise-grade platforms.
+      </p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all">All Projects (5)</button>
+      <button class="filter-tab" data-filter="ai">🤖 Agentic AI Systems (2)</button>
+      <button class="filter-tab" data-filter="enterprise">🌐 EnterprisePlatforms (3)</button>
+    </div>
+
     <div class="projects-grid">
-      <div class="project-card">
-        <h3>Analytics Portal</h3>
-        <p>A React-based analytics dashboard that delivers dynamic visual insights through interactive charts, real-time performance metrics, and multi-level drill-down capabilities. It also features a graphical hierarchy view, enabling users to analyze team structures and campaign performance in a clear, visual format.</p>
-        <div class="tags" style="margin-top:10px;">
-          <span>React</span>
+      <!-- Project 1: Quality Control (QC) Agent -->
+      <div class="project-card featured-ai" data-category="ai">
+        <div>
+          <h3>Quality Control (QC) Agent</h3>
+          <p>
+            Architected an autonomous Quality Control (QC) Agent that directly incorporates automated pre-login checklist audits and operational inspections. Built with Python and integrated with LLMs, this agent seamlessly collaborates with an integrated <strong>Document Intelligence Agent</strong> to extract, parse, and evaluate unstructured document submissions, ticket workflows, and login access checklists against enterprise SOP benchmarks. Exclusively utilizes <strong>MongoDB</strong> for schema-flexible persistence of audit reports and verification logs, with total host and application-level observability configured via <strong>Prometheus, Grafana, Node Exporter, and cAdvisor</strong> to monitor system metrics, inspection latency, error rates, and audit throughput in real time.
+          </p>
+        </div>
+        <div class="tags">
+          <span>Python</span>
+          <span>LLM</span>
+          <span>MongoDB (Only)</span>
+          <span>Document Intelligence Agent</span>
+          <span>Prometheus</span>
+          <span>Grafana</span>
+          <span>Node Exporter</span>
+          <span>cAdvisor</span>
+          <span>Agentic AI</span>
+        </div>
+      </div>
+
+      <!-- Project 2: KYC Verification Agent -->
+      <div class="project-card featured-ai" data-category="ai">
+        <div>
+          <h3>KYC Verification Agent</h3>
+          <p>
+            Engineered an autonomous KYC Verification Agent utilizing Python, LLMs, and custom <strong>Tools Integration</strong> (agentic tool calling) to automate customer onboarding and fraud detection. Deeply integrated with <strong>Document Intelligence</strong> to extract and cross-examine identity documents and validation parameters, containerized via <strong>Docker</strong> and stored in <strong>MongoDB</strong>. Personally architected and implemented total host and container observability using <strong>Prometheus, Grafana, Node Exporter, and cAdvisor</strong> for system resource monitoring, container performance, latency tracking, pass/fail ratios, and automated alerting, secured via Kong API Gateway.
+          </p>
+        </div>
+        <div class="tags">
+          <span>Python</span>
+          <span>LLM</span>
+          <span>Tools Integration</span>
+          <span>Document Intelligence</span>
+          <span>MongoDB</span>
+          <span>Docker</span>
+          <span>Prometheus</span>
+          <span>Grafana</span>
+          <span>Node Exporter</span>
+          <span>cAdvisor</span>
+          <span>Kong Gateway</span>
+        </div>
+      </div>
+
+      <!-- Project 3: Analytics Portal -->
+      <div class="project-card" data-category="enterprise">
+        <div>
+          <h3>Analytics & Hierarchy Portal</h3>
+          <p>
+            Engineered during my 1-year internship, this analytics dashboard delivers visual insights through interactive charts, real-time performance indicators, and multi-level drill-down capabilities. Incorporates hierarchical tree views and dynamic role switching enabling deep analysis of organizational structures, campaign results, and operational throughput.
+          </p>
+        </div>
+        <div class="tags">
+          <span>React.js</span>
           <span>Redux</span>
           <span>Context API</span>
+          <span>Hierarchical Views</span>
+          <span>REST APIs</span>
         </div>
       </div>
-      <div class="project-card">
-        <h3>Collections Portal</h3>
-        <p>Angular-based collections platform for agents and managers to manage assigned accounts, review customer data, and perform actions like arrangements, field visits, and promise-to-pay updates. Features a hierarchical dashboard with role-based access, along with modules such as Mission Control, Master Allocation, Geo Command, and Reports.</p>
-        <div class="tags" style="margin-top:10px;">
+
+      <!-- Project 4: Collections Portal -->
+      <div class="project-card" data-category="enterprise">
+        <div>
+          <h3>Collections & Field Operations Platform</h3>
+          <p>
+            Engineered in Angular during my internship, this enterprise collections management platform serves field agents and leadership. Features role-based access control (RBAC), Maker-Checker workflow approval validations across 25+ modules, and interactive map-based geographical drill-down from national to agent-level views.
+          </p>
+        </div>
+        <div class="tags">
           <span>Angular</span>
           <span>TypeScript</span>
-          <span>HTML</span>
           <span>SCSS</span>
+          <span>RBAC</span>
+          <span>Maker-Checker Logic</span>
+          <span>Map Visualizations</span>
         </div>
       </div>
-      <div class="project-card">
-        <h3>Payment Portal</h3>
-        <p>Implemented DSS payment functionality enabling agents to generate payment links through notification rules integrated with communication templates in Collection portal. Configured link validity, dynamic payment options, and customer data mapping, along with support for flexible payment amounts and secure transaction handling.</p>
-        <div class="tags" style="margin-top:10px;">
+
+      <!-- Project 5: Payment Portal -->
+      <div class="project-card" data-category="enterprise">
+        <div>
+          <h3>DSS Dynamic Payment Portal</h3>
+          <p>
+            Engineered the frontend integration in Angular during my internship, facilitating automated payment link generation via configurable notification rules and communication templates. Implemented secure payment validity windows, customer parameter mapping, and end-to-end encrypted payload handling aligned with GCP standards.
+          </p>
+        </div>
+        <div class="tags">
           <span>Angular</span>
           <span>TypeScript</span>
-          <span>HTML</span>
-          <span>SCSS</span>
+          <span>GCP Payload Encryption</span>
+          <span>REST APIs</span>
+          <span>Payment Workflows</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="contact">
-    <h2 class="section-title">Let's Connect</h2>
-    <div class="contact-grid">
-      <a href="https://github.com/rajasekharreddy4545" target="_blank" class="contact-card">💻 GitHub</a>
-      <a href="https://www.linkedin.com/in/penugonda-rajasekhar-reddy-6943b5288" target="_blank" class="contact-card">🔗 LinkedIn</a>
-      <a href="https://instagram.com/rajasekhar.reddyy" target="_blank" class="contact-card">📸 Instagram</a>
-      <a href="mailto:rajapenugonda2003@gmail.com" class="contact-card">✉️ Email</a>
-      <a href="tel:+916301805230" class="contact-card">📞 Phone</a>
+  <!-- WORK EXPERIENCE SECTION -->
+  <section id="experience">
+    <div class="section-header">
+      <div class="section-eyebrow">Career History</div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-subtitle">
+        Hands-on enterprise software engineering, production microservices, and AI integrations.
+      </p>
+    </div>
+
+    <div class="timeline">
+      <!-- Master Grouped Company Experience Card -->
+      <div class="company-experience-card">
+        <!-- Company Header (ezee.ai) -->
+        <div class="company-main-header">
+          <div class="company-brand-row">
+            <div class="company-logo-avatar">
+              <img src="assets/ezeeai_logo.jpg" alt="ezee.ai logo" class="company-logo-img">
+            </div>
+            <div>
+              <div class="company-name">
+                ezee.ai
+                <span class="company-onsite-tag">On-site</span>
+              </div>
+              <p class="company-tenure-meta" id="expCompanyTenure">1 yr 10 mos · Bengaluru & Chennai, India</p>
+            </div>
+          </div>
+          <div class="company-tenure-badge">
+            <span>⚡ Full-Time + Internship</span>
+          </div>
+        </div>
+
+        <!-- Nested Roles Progression Timeline -->
+        <div class="nested-roles-timeline">
+          <!-- Position 1: Junior Software Engineer (Present) -->
+          <div class="nested-role-item">
+            <div class="nested-role-dot active-dot"></div>
+            <div>
+              <div class="role-header-line">
+                <div>
+                  <div class="role-title-row">
+                    <h3 class="role-heading">Junior Software Engineer</h3>
+                    <span class="role-badge-present">● Present</span>
+                  </div>
+                  <div class="role-meta-info">
+                    <strong>Full-time</strong>
+                    <span class="role-meta-sep">•</span>
+                    <span>Feb 2026 – Present · <span id="fulltimeRoleDuration">9 mos</span></span>
+                    <span class="role-meta-sep">•</span>
+                    <span>Bengaluru, Karnataka, India</span>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="exp-list">
+                <li>Architected and developed production <strong>Agentic AI systems</strong>: the <strong>Quality Control (QC) Agent</strong> (automating SOP compliance and pre-login checklist audits using Python, LLMs, MongoDB only, and Document Intelligence) and the <strong>KYC Verification Agent</strong> (custom Tools Integration, Docker, MongoDB).</li>
+                <li>Engineered enterprise microservices and real-time event-driven data streaming pipelines utilizing <strong>Apache Kafka</strong>.</li>
+                <li>Implemented complete host and application-level observability using <strong>Prometheus, Grafana, Node Exporter, and cAdvisor</strong> to monitor system metrics, service latency, pass/fail rates, and alerts.</li>
+                <li>Connected and secured microservices with <strong>Kong API Gateway</strong> routing, rate limiting, and observability.</li>
+                <li>Collaborated on multi-entity architecture to seamlessly serve varying enterprise client hierarchies (including major clients like <strong>JSW and YOMA</strong>).</li>
+              </ul>
+
+              <div class="exp-tags">
+                <span class="exp-tag">Apache Kafka</span>
+                <span class="exp-tag">Grafana</span>
+                <span class="exp-tag">Prometheus</span>
+                <span class="exp-tag">Node Exporter & cAdvisor</span>
+                <span class="exp-tag">Agentic AI & LLMs</span>
+                <span class="exp-tag">Kong Gateway</span>
+                <span class="exp-tag">Docker</span>
+                <span class="exp-tag">PostgreSQL</span>
+                <span class="exp-tag">Node.js</span>
+                <span class="exp-tag">MongoDB</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Position 2: Intern -->
+          <div class="nested-role-item">
+            <div class="nested-role-dot"></div>
+            <div>
+              <div class="role-header-line">
+                <div>
+                  <div class="role-title-row">
+                    <h3 class="role-heading">Intern</h3>
+                    <span class="role-badge-intern">Software Engineer Intern</span>
+                  </div>
+                  <div class="role-meta-info">
+                    <strong>Internship</strong>
+                    <span class="role-meta-sep">•</span>
+                    <span>Jan 2025 – Jan 2026 · <span id="internRoleDuration">1 yr 1 mo</span></span>
+                    <span class="role-meta-sep">•</span>
+                    <span>Chennai, Tamil Nadu, India</span>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="exp-list">
+                <li>Focused on enterprise frontend engineering with <strong>Angular</strong> (and React.js), delivering user interfaces for 3 major platforms: <strong>Collections & Field Operations Platform</strong>, <strong>Analytics & Hierarchy Portal</strong>, and <strong>DSS Dynamic Payment Portal</strong>.</li>
+                <li>Engineered <strong>Maker-Checker workflows</strong> across 25+ modules with rigorous RBAC-based validations for authorized approvals.</li>
+                <li>Developed <strong>hierarchical dashboards</strong> featuring map-based geographical visualizations supporting region, state, city, and agent-level drill-down metrics and dynamic role switching.</li>
+                <li>Built the <strong>DSS Dynamic Payment Portal</strong> frontend, supporting automated payment link generation workflows, validity windows, and parameter mapping.</li>
+                <li>Implemented <strong>payload-level encryption and decryption</strong> adhering to Google Cloud Platform (GCP) standards for secure data protection.</li>
+                <li>Conducted code quality auditing and static analysis optimization leveraging <strong>SonarQube</strong>, and upgraded React enterprise codebase from version 17 to 19.</li>
+              </ul>
+
+              <div class="exp-tags">
+                <span class="exp-tag">Angular</span>
+                <span class="exp-tag">React.js (v19)</span>
+                <span class="exp-tag">TypeScript</span>
+                <span class="exp-tag">JavaScript (ES6+)</span>
+                <span class="exp-tag">RxJS</span>
+                <span class="exp-tag">HTML5 & SCSS</span>
+                <span class="exp-tag">RBAC</span>
+                <span class="exp-tag">GCP Payload Encryption</span>
+                <span class="exp-tag">SonarQube</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
+  <!-- CONTACT & CONNECT SECTION -->
+  <section id="contact">
+    <div class="section-header">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">
+        Interested in discussing Agentic AI, full-stack systems, or engineering opportunities? Reach out directly!
+      </p>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-grid">
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/penugonda-rajasekhar-reddy-6943b5288" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">🔗</div>
+          <div class="contact-label">LinkedIn</div>
+          <div class="contact-val">Professional Profile & Network</div>
+          <div class="contact-action">Connect on LinkedIn ↗</div>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/rajasekharreddy4545" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">💻</div>
+          <div class="contact-label">GitHub</div>
+          <div class="contact-val">Repositories & Open-Source Code</div>
+          <div class="contact-action">View GitHub Profile ↗</div>
+        </a>
+
+        <!-- Direct Phone / Call -->
+        <a href="tel:+916301805230" class="contact-card">
+          <div class="contact-icon">📞</div>
+          <div class="contact-label">Phone & Call</div>
+          <div class="contact-val">Direct Voice Call or SMS</div>
+          <div class="contact-action">Tap to Call / Message 📞</div>
+        </a>
+
+
+        <!-- Instagram -->
+        <a href="https://instagram.com/rajasekhar.reddyy" target="_blank" rel="noopener noreferrer" class="contact-card">
+          <div class="contact-icon">📸</div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-val">Personal & Social Updates</div>
+          <div class="contact-action">Open Instagram ↗</div>
+        </a>
+      </div>
+
+      <div class="contact-cta-row">
+        <a href="mailto:rajapenugonda2003@gmail.com?subject=Opportunity%20Inquiry%20-%20Portfolio" class="btn btn-primary" style="padding: 14px 30px; font-size: 15px;">
+          <span>Send Direct Email</span>
+          <span>✉️</span>
+        </a>
+        <a href="https://wa.me/916301805230?text=Hi%20Rajasekhar,%20I%20saw%20your%20portfolio%20and%20would%20like%20to%20connect!" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="padding: 14px 30px; font-size: 15px; border-color: #22c55e; color: #22c55e;">
+          <span>Chat on WhatsApp</span>
+          <span>💬</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOAST NOTIFICATION FOR COPY -->
+  <div class="toast" id="toast">Copied to clipboard!</div>
+
+  <!-- FOOTER -->
   <footer>
-    © 2026 Rajasekhar Reddy
+    <p>© 2026 <span class="footer-accent">Penugonda Rajasekhar Reddy</span> · Software Engineer. All rights reserved.</p>
+    <p>Engineered for Full-Stack Systems & Agentic AI.</p>
   </footer>
 
+  <!-- JAVASCRIPT: THEME TOGGLE, MOBILE MENU, PROJECT FILTERS, COPY TOAST -->
   <script>
+    // 1. DUAL-STATE THEME SWITCHER (Dark & Light)
+    const themeToggle = document.getElementById('themeToggle');
+    const root = document.documentElement;
+
+    function setTheme(theme) {
+      root.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (themeToggle) {
+        themeToggle.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    setTheme(savedTheme);
+
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = root.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        setTheme(newTheme);
+      });
+    }
+
+    // 2. MOBILE HAMBURGER MENU
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
-    const closeMenu = document.getElementById('closeMenu');
 
-    function openMenu() {
-      hamburger.classList.add('open');
-      mobileMenu.classList.add('open');
+    function toggleMenu() {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
     }
 
-    function closeMenuFn() {
-      hamburger.classList.remove('open');
-      mobileMenu.classList.remove('open');
-    }
-
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.contains('open') ? closeMenuFn() : openMenu();
-    });
-
-    closeMenu.addEventListener('click', closeMenuFn);
+    hamburger.addEventListener('click', toggleMenu);
 
     mobileLinks.forEach(link => {
-      link.addEventListener('click', closeMenuFn);
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
     });
+
+    // Close mobile menu if clicked outside
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    // 3. SCROLL SPY FOR ACTIVE NAV HIGHLIGHT
+    const sections = document.querySelectorAll('section[id]');
+    const navAnchors = document.querySelectorAll('.nav-links a, .mobile-menu a');
+
+    window.addEventListener('scroll', () => {
+      let currentSectionId = '';
+      const scrollPos = window.scrollY + 140;
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      navAnchors.forEach(a => {
+        if (a.getAttribute('href') === `#${currentSectionId}`) {
+          a.classList.add('active');
+        } else {
+          a.classList.remove('active');
+        }
+      });
+    }, { passive: true });
+
+    // 4. PROJECT FILTER TABS
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+          if (filter === 'all') {
+            card.style.display = 'flex';
+          } else {
+            const category = card.getAttribute('data-category');
+            card.style.display = category === filter ? 'flex' : 'none';
+          }
+        });
+      });
+    });
+
+    // 5. COPY TO CLIPBOARD HELPER WITH TOAST
+    function copyText(text, label) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`${label} copied to clipboard!`);
+      }).catch(() => {
+        // Fallback
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        showToast(`${label} copied to clipboard!`);
+      });
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      toast.textContent = message;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // 6. DYNAMIC AUTOMATIC EXPERIENCE CALCULATION
+    function updateDynamicExperience() {
+      // Milestone joining and progression dates:
+      // Joined as Intern: January 7, 2025
+      // Promoted to Full-Time: February 2, 2026
+      const internStartDate = new Date(2025, 0, 7);
+      const fulltimeStartDate = new Date(2026, 1, 2);
+      const now = new Date();
+
+      function formatDuration(totalMonths, style) {
+        const years = Math.floor(totalMonths / 12);
+        const months = totalMonths % 12;
+
+        if (style === 'compact') {
+          if (years > 0 && months > 0) return `${years}y ${months}m`;
+          if (years > 0) return `${years}y`;
+          return `${months}m`;
+        }
+
+        if (style === 'narrative') {
+          const yStr = years > 0 ? `${years} year${years > 1 ? 's' : ''}` : '';
+          const mStr = months > 0 ? `${months} month${months > 1 ? 's' : ''}` : '';
+          if (yStr && mStr) return `${yStr} ${mStr}`;
+          return yStr || mStr || '1 month';
+        }
+
+        // Standard short: e.g. "1 yr 10 mos", "9 mos", "1 yr 1 mo"
+        const yStr = years > 0 ? `${years} yr${years > 1 ? 's' : ''}` : '';
+        const mStr = months > 0 ? `${months} mo${months > 1 ? 's' : ''}` : '';
+        if (yStr && mStr) return `${yStr} ${mStr}`;
+        return yStr || mStr || '1 mo';
+      }
+
+      // Inclusive calendar months difference (aligned with LinkedIn calculations)
+      const totalMonths = Math.max(1, (now.getFullYear() - internStartDate.getFullYear()) * 12 + (now.getMonth() - internStartDate.getMonth()) + 1);
+      const fulltimeMonths = Math.max(1, (now.getFullYear() - fulltimeStartDate.getFullYear()) * 12 + (now.getMonth() - fulltimeStartDate.getMonth()) + 1);
+      const internMonths = 13; // Jan 2025 to Jan 2026 (1 yr 1 mo)
+
+      const totalCompact = formatDuration(totalMonths, 'compact');
+      const totalShort = formatDuration(totalMonths, 'short');
+      const totalNarrative = formatDuration(totalMonths, 'narrative');
+      const fulltimeShort = formatDuration(fulltimeMonths, 'short');
+      const internShort = formatDuration(internMonths, 'short');
+
+      // Update Hero Stat
+      const elHeroStat = document.getElementById('statTotalExp');
+      if (elHeroStat) elHeroStat.textContent = totalCompact;
+
+      // Update About Me Narrative
+      const elNarrativeExp = document.getElementById('aboutNarrativeExp');
+      if (elNarrativeExp) elNarrativeExp.textContent = totalNarrative;
+
+      // Update About Me Company Card
+      const elAboutCompanyTenure = document.getElementById('aboutCompanyTenure');
+      if (elAboutCompanyTenure) elAboutCompanyTenure.textContent = `${totalShort} · On-site`;
+
+      // Update Experience Section Company Header
+      const elExpCompanyTenure = document.getElementById('expCompanyTenure');
+      if (elExpCompanyTenure) elExpCompanyTenure.textContent = `${totalShort} · Bengaluru & Chennai, India`;
+
+      // Update Full-Time Role Duration
+      const elFulltimeDuration = document.getElementById('fulltimeRoleDuration');
+      if (elFulltimeDuration) elFulltimeDuration.textContent = fulltimeShort;
+
+      // Update Intern Role Duration
+      const elInternDuration = document.getElementById('internRoleDuration');
+      if (elInternDuration) elInternDuration.textContent = internShort;
+    }
+
+    updateDynamicExperience();
   </script>
 
 </body>
