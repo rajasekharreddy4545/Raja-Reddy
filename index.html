@@ -128,6 +128,8 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-brand-logo {
@@ -142,12 +144,14 @@
       font-weight: 800;
       font-size: 18px;
       box-shadow: 0 4px 15px var(--accent-glow);
+      flex-shrink: 0;
     }
 
     .nav-brand-text {
       font-size: 20px;
       font-weight: 700;
       color: var(--text-main);
+      white-space: nowrap;
     }
 
     .nav-brand-text span {
@@ -837,7 +841,7 @@
     /* JOURNEY / EVOLUTION SECTION */
     .journey-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 16px;
       position: relative;
     }
@@ -1173,7 +1177,7 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
       gap: 28px;
     }
 
@@ -1598,22 +1602,49 @@
     }
 
     /* COMPREHENSIVE RESPONSIVE DESIGN */
+    /* Laptop & Mid-size screens: optimize atom proportions */
+    @media (min-width: 901px) and (max-width: 1150px) {
+      .hero {
+        gap: 32px;
+      }
+      .atom-viewport {
+        transform: scale(0.88);
+        transform-origin: center center;
+      }
+      .sat-ml { left: -32px; }
+      .sat-mr { right: -32px; }
+    }
+
+    /* Tablets & Foldables (<= 900px) */
     @media (max-width: 900px) {
       .hero {
-        gap: 36px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 24px;
         min-height: auto;
-        padding-top: 20px;
+        padding-top: 24px;
+        padding-bottom: 24px;
       }
       .hero-content {
-        min-width: unset;
+        min-width: 100%;
         width: 100%;
+        max-width: 100%;
+        flex: none;
       }
+      /* Clean mobile presentation: Hide 3D rotating atom on mobile/tablets */
       .hero-atom-stage {
-        width: 100%;
-        margin-top: 15px;
-        min-width: unset;
+        display: none !important;
+      }
+      .hero-cta {
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 24px;
+      }
+      .hero-cta .btn {
+        width: auto;
       }
     }
 
@@ -1657,28 +1688,6 @@
         font-size: 11.5px;
         line-height: 1.35;
       }
-
-      /* 3D Atom on Mobile: Proportionally scaled so all 6 badges remain visible */
-      .hero-atom-stage {
-        width: 100%;
-        margin-top: 20px;
-        overflow: hidden;
-        display: flex;
-        justify-content: center;
-      }
-      .atom-viewport {
-        transform: scale(0.8);
-        transform-origin: center center;
-        width: 310px;
-        height: 300px;
-        margin: 0 auto;
-      }
-      .sat-tl { top: -8px; left: -8px; font-size: 10.5px; padding: 5px 10px; }
-      .sat-tr { top: -8px; right: -8px; font-size: 10.5px; padding: 5px 10px; }
-      .sat-bl { bottom: -8px; left: -8px; font-size: 10.5px; padding: 5px 10px; }
-      .sat-br { bottom: -8px; right: -8px; font-size: 10.5px; padding: 5px 10px; }
-      .sat-ml { top: 50%; left: -22px; transform: translateY(-50%); font-size: 10.5px; padding: 5px 10px; display: inline-flex; }
-      .sat-mr { top: 50%; right: -22px; transform: translateY(-50%); font-size: 10.5px; padding: 5px 10px; display: inline-flex; }
 
       /* About Me */
       .about-main-card {
@@ -1786,6 +1795,15 @@
     }
 
     @media (max-width: 640px) {
+      .hero-cta {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+      }
+      .hero-cta .btn {
+        width: 100%;
+        justify-content: center;
+      }
       .journey-grid {
         grid-template-columns: 1fr;
         gap: 16px;
@@ -1800,6 +1818,9 @@
       nav {
         padding: 12px 14px;
       }
+      .nav-actions {
+        gap: 10px;
+      }
       .nav-talk-btn {
         display: none;
       }
@@ -1807,16 +1828,7 @@
         font-size: 15px;
       }
       .nav-brand-text span {
-        font-size: 10px;
-      }
-      .hero-cta {
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-      }
-      .hero-cta .btn {
-        width: 100%;
-        justify-content: center;
+        display: none;
       }
     }
 
@@ -1837,26 +1849,44 @@
       .stat-item h3 {
         font-size: 21px;
       }
-      .atom-viewport {
-        transform: scale(0.72);
-      }
     }
 
     @media (max-width: 380px) {
+      nav {
+        padding: 10px 12px;
+      }
+      .nav-brand {
+        gap: 8px;
+      }
+      .nav-brand-logo {
+        width: 32px;
+        height: 32px;
+        font-size: 15px;
+      }
+      .nav-brand-text {
+        font-size: 14px;
+      }
       .nav-brand-text span {
         display: none;
       }
-      .atom-viewport {
-        transform: scale(0.64);
+      .nav-actions {
+        gap: 8px;
+      }
+      .theme-switch-btn {
+        transform: scale(0.92);
+        transform-origin: center right;
       }
       .stats-strip {
-        gap: 10px;
+        gap: 8px;
+      }
+      .stat-item {
+        padding: 8px 4px;
       }
       .stat-item h3 {
-        font-size: 19px;
+        font-size: 18px;
       }
       .stat-item p {
-        font-size: 10.5px;
+        font-size: 10px;
       }
     }
   </style>
@@ -1868,10 +1898,7 @@
   <nav>
     <a href="#" class="nav-brand">
       <div class="nav-brand-logo">PR</div>
-      <div class="nav-brand-text">
-        Rajasekhar Reddy
-        <span>Software Engineer</span>
-      </div>
+      <div class="nav-brand-text">Rajasekhar Reddy</div>
     </a>
 
     <ul class="nav-links">
@@ -1964,7 +1991,7 @@
       <div class="stats-strip">
         <div class="stat-item">
           <h3 id="statTotalExp">1y 10m</h3>
-          <p>Enterprise Exp. (ezee.ai)</p>
+          <p>Experience</p>
         </div>
         <div class="stat-item">
           <h3>2</h3>
@@ -1987,7 +2014,8 @@
         <div class="atom-system">
           <!-- Central Pulsing Nucleus -->
           <div class="atom-nucleus">
-            <span>Raja</span>
+            <span>PR</span>
+            <span class="core-tag">Tech Core</span>
           </div>
           <div class="nucleus-energy-ring"></div>
 
@@ -2194,12 +2222,12 @@
       <div class="journey-card active-phase">
         <span class="phase-badge">Phase 05 • Current Focus</span>
         <h3>DevOps & Server Infrastructure</h3>
-        <p>Deepening DevOps and server-level expertise: working with Docker containers, NGINX reverse proxies, and server-level Linux environments, with practical knowledge of Kong & Konga.</p>
+        <p>Deepening DevOps and server-level expertise: working with Docker containers, NGINX reverse proxies, and server-level Linux environments, with practical knowledge of Kong.</p>
         <div class="journey-pills">
           <span class="journey-pill">Docker</span>
           <span class="journey-pill">NGINX</span>
           <span class="journey-pill">Linux Servers</span>
-          <span class="journey-pill">Kong & Konga</span>
+          <span class="journey-pill">Kong API Gateway</span>
         </div>
       </div>
     </div>
@@ -2250,7 +2278,6 @@
           <span class="skill-tag">Kong Gateway</span>
           <span class="skill-tag">Konga</span>
           <span class="skill-tag">Linux</span>
-          <span class="skill-tag">SonarQube</span>
         </div>
       </div>
 
@@ -2258,16 +2285,12 @@
       <div class="skill-card">
         <div class="skill-card-head">
           <div class="skill-icon">💾</div>
-          <h3>Databases & Storage</h3>
+          <h3>Databases</h3>
         </div>
         <div class="skill-tags">
           <span class="skill-tag featured-skill">PostgreSQL</span>
           <span class="skill-tag featured-skill">VectorDB</span>
           <span class="skill-tag">MongoDB</span>
-          <span class="skill-tag">MySQL</span>
-          <span class="skill-tag">Redis</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">NoSQL</span>
         </div>
       </div>
 
@@ -2317,10 +2340,8 @@
           <span class="skill-tag">Git & GitHub</span>
           <span class="skill-tag">Postman</span>
           <span class="skill-tag">VS Code</span>
-          <span class="skill-tag">pgAdmin / DBeaver</span>
           <span class="skill-tag">Google Colab</span>
-          <span class="skill-tag">Linux / Bash</span>
-          <span class="skill-tag">Agile / Scrum</span>
+          <span class="skill-tag">Linux </span>
         </div>
       </div>
     </div>
@@ -2340,7 +2361,7 @@
     <div class="filter-tabs">
       <button class="filter-tab active" data-filter="all">All Projects (5)</button>
       <button class="filter-tab" data-filter="ai">🤖 Agentic AI Systems (2)</button>
-      <button class="filter-tab" data-filter="enterprise">🌐 EnterprisePlatforms (3)</button>
+      <button class="filter-tab" data-filter="enterprise">🌐 Enterprise Platforms (3)</button>
     </div>
 
     <div class="projects-grid">
@@ -2355,7 +2376,7 @@
         <div class="tags">
           <span>Python</span>
           <span>LLM</span>
-          <span>MongoDB (Only)</span>
+          <span>MongoDB</span>
           <span>Document Intelligence Agent</span>
           <span>Prometheus</span>
           <span>Grafana</span>
@@ -2384,7 +2405,6 @@
           <span>Grafana</span>
           <span>Node Exporter</span>
           <span>cAdvisor</span>
-          <span>Kong Gateway</span>
         </div>
       </div>
 
@@ -2408,7 +2428,7 @@
       <!-- Project 4: Collections Portal -->
       <div class="project-card" data-category="enterprise">
         <div>
-          <h3>Collections & Field Operations Platform</h3>
+          <h3>Collections Platform</h3>
           <p>
             Engineered in Angular during my internship, this enterprise collections management platform serves field agents and leadership. Features role-based access control (RBAC), Maker-Checker workflow approval validations across 25+ modules, and interactive map-based geographical drill-down from national to agent-level views.
           </p>
@@ -2540,7 +2560,7 @@
               </div>
 
               <ul class="exp-list">
-                <li>Focused on enterprise frontend engineering with <strong>Angular</strong> (and React.js), delivering user interfaces for 3 major platforms: <strong>Collections & Field Operations Platform</strong>, <strong>Analytics & Hierarchy Portal</strong>, and <strong>DSS Dynamic Payment Portal</strong>.</li>
+                <li>Focused on enterprise frontend engineering with <strong>Angular</strong> (and React.js), delivering user interfaces for 3 major platforms: <strong>Collections Platform</strong>, <strong>Analytics & Hierarchy Portal</strong>, and <strong>DSS Dynamic Payment Portal</strong>.</li>
                 <li>Engineered <strong>Maker-Checker workflows</strong> across 25+ modules with rigorous RBAC-based validations for authorized approvals.</li>
                 <li>Developed <strong>hierarchical dashboards</strong> featuring map-based geographical visualizations supporting region, state, city, and agent-level drill-down metrics and dynamic role switching.</li>
                 <li>Built the <strong>DSS Dynamic Payment Portal</strong> frontend, supporting automated payment link generation workflows, validity windows, and parameter mapping.</li>
